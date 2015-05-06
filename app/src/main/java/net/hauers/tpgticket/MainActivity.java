@@ -2,8 +2,11 @@ package net.hauers.tpgticket;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends Activity {
@@ -23,9 +26,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -34,5 +34,11 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessage(View view) {
+        Log.i("net.hauers.tpgticket", "In sendMessage");
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("788", null, "tpg2", null, null);
     }
 }
