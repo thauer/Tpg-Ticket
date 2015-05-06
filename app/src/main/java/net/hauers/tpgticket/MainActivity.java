@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 
 
 public class MainActivity extends Activity {
@@ -37,8 +38,13 @@ public class MainActivity extends Activity {
     }
 
     public void sendMessage(View view) {
-        Log.i("net.hauers.tpgticket", "In sendMessage");
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("788", null, "tpg2", null, null);
+
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+        Log.i("net.hauers.tpgticket", "In sendMessage, the Checkbox is " + checkBox.isChecked());
+        if(checkBox.isChecked()) {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage("788", null, "tpg2", null, null);
+        }
+        checkBox.setChecked(false);
     }
 }
